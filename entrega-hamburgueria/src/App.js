@@ -38,15 +38,13 @@ function App() {
 
     if (currentSale.length === 0) {
       setCurrentSale(currentSale.concat(product))
+    } else {
+      const checkAvailability = currentSale.some(element => element.name === product.name)
+        if (checkAvailability === false) {
+          setCurrentSale(currentSale.concat(product))
+        }
     }
-
-    if (currentSale.length > 0) {
-          const checkAvailability = currentSale.some(element => element.name === product.name)
-          if (checkAvailability === false) {
-            setCurrentSale(currentSale.concat(product))
-          }
-      }
-    }
+  }
 
   function clearCart() {
     setCurrentSale([])
