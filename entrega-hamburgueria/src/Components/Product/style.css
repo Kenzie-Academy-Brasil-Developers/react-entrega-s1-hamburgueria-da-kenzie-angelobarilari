@@ -68,3 +68,6 @@
     border: 2px solid var(--color-primary);
 }
 
+.card > button {
+    cursor: pointer;
+}

@@ -1,5 +1,5 @@
 import "./style.css"
-import { useState } from "react"
+
 
 function Product( { id, name, category, price, img, handleClick } ) {
     return (

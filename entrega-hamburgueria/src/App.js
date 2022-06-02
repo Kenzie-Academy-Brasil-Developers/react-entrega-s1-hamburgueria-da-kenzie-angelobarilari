@@ -1,6 +1,6 @@
 import './App.css';
 import './reset.css'
-import { useEffect, useState } from 'react'
+import { createRef, useEffect, useState } from 'react'
 import ProductList from './Components/ProductList';
 import Header from './Components/Header';
 import Cart from './Components/Cart';
@@ -35,8 +35,18 @@ function App() {
   
   const handleClick = (productId) => {
     const product = products.find(element => element.id === productId)
-    setCurrentSale(currentSale.concat(product))
-  }
+
+    if (currentSale.length === 0) {
+      setCurrentSale(currentSale.concat(product))
+    }
+
+    if (currentSale.length > 0) {
+          const checkAvailability = currentSale.some(element => element.name === product.name)
+          if (checkAvailability === false) {
+            setCurrentSale(currentSale.concat(product))
+          }
+      }
+    }
 
   function clearCart() {
     setCurrentSale([])
